@@ -8,7 +8,7 @@ import {
 } from '@okta/okta-angular';
 import { Constants } from './shared/constants';
 
-const stsSettings = {
+/*const stsSettings = {
   authority: Constants.stsAurhority,
   clientId: Constants.clientId,
   redirectUri: `${Constants.clientRoot}signin-callback`,
@@ -22,7 +22,7 @@ const stsSettings = {
   }
 
 
-}
+}*/
 
 const routes: Routes = [
   {
@@ -32,10 +32,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [OktaAuthModule,RouterModule.forRoot(routes)],
-  exports: [RouterModule, OktaAuthModule],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
   providers: [
-    { provide: OKTA_CONFIG, useValue: stsSettings },
+   // { provide: OKTA_CONFIG, useValue: stsSettings },
   ],
 })
 export class AppRoutingModule { }

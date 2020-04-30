@@ -13,16 +13,17 @@ export class AppComponent implements OnInit{
   isAuthenticated = false
 
   constructor(private _authService: AuthService) {
-    this._authService.loginChanged$.subscribe(loggedIn => {
-      this.isLoggedIn = loggedIn
-    })
+   // subscribe to authentication state changes
+   this._authService.isAuthenticated().subscribe(isAuthenticated => this.isAuthenticated = isAuthenticated);
 
   }
 
-  ngOnInit(): void {
-    this._authService.isLoggedIn().then(loggedIn =>{
-      this.isLoggedIn = loggedIn
-    })
+  async ngOnInit(): Promise<void> {
+   // this._authService.isLoggedIn().then(loggedIn =>{
+   //   this.isLoggedIn = loggedIn
+   // })
+
+   this.isAuthenticated = await this._authService.isAuthenticatedPromise();
   }
 
   login() {

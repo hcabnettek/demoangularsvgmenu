@@ -1,2 +1,7 @@
-<navbar></navbar>
-<router-outlet></router-outlet>
+<main class="container mx-auto">
+  <a class="item" *ngIf="!isAuthenticated" (click)="login()">Login</a>
+  <a id="messages-button" class="item" *ngIf="isAuthenticated" routerLink="/messages"><i aria-hidden="true" class="mail outline icon"></i>Messages</a>
+  <a id="profile-button" class="item" *ngIf="isAuthenticated" routerLink="/profile">Profile</a>
+  <a id="logout-button" class="item" *ngIf="isAuthenticated" (click)="logout()">Logout</a>
+    <router-outlet></router-outlet>
+</main>

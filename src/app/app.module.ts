@@ -3,22 +3,35 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { NavitemComponent } from './navbar/navitem/navitem.component';
-import { DropdownmenuComponent } from './navbar/dropdownmenu/dropdownmenu.component';
+
+import { LoginModule } from './login/login.module';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ProfileModule } from './profile/profile.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    NavitemComponent,
-    DropdownmenuComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoginModule,
+    CoreModule,
+    SharedModule,
+    ProfileModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      //logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

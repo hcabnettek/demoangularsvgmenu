@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-//import { AuthService } from '../core/services/auth.service';
-//import { ValidationService } from '../core/services/validation.service';
 import { IUserLogin } from '../shared/interfaces';
-//import { LoggerService } from '../core/services/logger.service';
+import { AuthService } from '../core/auth-service.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +14,8 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router) { }
+              private router: Router,
+              private authservice: AuthService) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -25,12 +24,16 @@ export class LoginComponent implements OnInit {
   buildForm() {
     this.loginForm = this.formBuilder.group({
         email:      ['', [ Validators.required /*, ValidationService.emailValidator */]],
-        password:   ['', [ Validators.required,/* ValidationService.passwordValidator */ ]]
+        password:   ['', [ Validators.required, /* ValidationService.passwordValidator */ ]]
     });
   }
 
   submit({ value, valid }: { value: IUserLogin, valid: boolean }) {
-    
+
+  }
+
+  doLogin() {
+    this.authservice.login();
   }
 
 }

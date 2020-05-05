@@ -4,8 +4,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+
   }
-  
+
   /* Icon Button */
   .icon-button {
     --button-size: calc(var(--nav-size) * 0.5);
@@ -20,20 +22,20 @@
     justify-content: center;
     transition: filter 300ms;
   }
-  
+
   .icon-button:hover {
     filter: brightness(1.2);
   }
-  
-  .icon-button svg { 
+
+  .icon-button svg {
     fill: var(--text-color);
     width: 20px;
     height: 20px;
   }
-  
-  
+
+
   /* Dropdown Menu */
-  
+
   .dropdown {
     position: absolute;
     top: 58px;
@@ -46,11 +48,11 @@
     overflow: hidden;
     transition: height var(--speed) ease;
   }
-  
+
   .menu {
     width: 100%;
   }
-  
+
   .menu-item {
     height: 50px;
     display: flex;
@@ -59,24 +61,24 @@
     transition: background var(--speed);
     padding: 0.5rem;
   }
-  
+
   .menu-item .icon-button {
     margin-right: 0.5rem;
   }
-  
-  
+
+
   .menu-item .icon-button:hover {
     filter: none;
   }
-  
+
   .menu-item:hover {
     background-color: #525357;
   }
-  
+
   .icon-right {
     margin-left: auto;
   }
-  
+
   /* CSSTransition classes  */
   .menu-primary-enter {
     position: absolute;
@@ -93,8 +95,8 @@
     transform: translateX(-110%);
     transition: all var(--speed) ease;
   }
-  
-  
+
+
   .menu-secondary-enter {
     transform: translateX(110%);
   }
@@ -103,7 +105,7 @@
     transition: all var(--speed) ease;
   }
   .menu-secondary-exit {
-  
+
   }
   .menu-secondary-exit-active {
     transform: translateX(110%);

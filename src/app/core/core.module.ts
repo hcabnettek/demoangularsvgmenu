@@ -10,6 +10,7 @@ import { NavitemComponent } from './navbar/navitem/navitem.component';
 import { DropdownmenuComponent } from './navbar/dropdownmenu/dropdownmenu.component';
 import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
 import { Constants } from '../shared/constants';
+import * as utils from './utils';
 
 //import { AuthService } from './auth-service.component';
 //import { EventBusService } from './services/event-bus.service';
@@ -21,7 +22,7 @@ const stsSettings = {
   pkce: true,
   scopes: ['openid', 'profile', 'email'],
   responseType: ['code'], //id_token token
-  postLogoutRedirectUri: `${Constants.clientRoot}signout-callback`,
+  postLogoutRedirectUri: ``,
   issuer: 'https://dev-200299.okta.com/oauth2/default',
   testing: {
     disableHttpsCheck: true
@@ -35,7 +36,7 @@ const stsSettings = {
     userinfo_endpoint: `${Constants.stsAurhority}userinfo`,
     end_session_endpoint:``,
     code_challenge_method: 'S256',
-    //code_challenge: this.code_challenge,
+    code_challenge: utils.generateCodeChallenge(utils.generateRandomString(128)),
   }
 
 

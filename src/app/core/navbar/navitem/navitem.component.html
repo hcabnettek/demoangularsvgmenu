@@ -1,8 +1,9 @@
 <li class="nav-item">
     <a href="#" class="icon-button">
       <!--{props.icon} -->
+      <ng-content select=".icon"></ng-content>
     </a>
 
     <!--{open && props.children} -->
-    <span slot="sweet"></span>
+    <ng-content></ng-content>
 </li>

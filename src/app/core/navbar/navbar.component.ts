@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ContentChild, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
+import { NavitemComponent } from './navitem/navitem.component';
 
 //import { AuthService } from '../services/auth.service';
 
@@ -13,6 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
+  @ContentChild(TemplateRef) navBtn: TemplateRef<NavitemComponent>;
   loginLogoutText = 'Login';
   sub: Subscription;
 

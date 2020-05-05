@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {
-  OKTA_CONFIG,
-  OktaAuthGuard,
-  OktaAuthModule,
-  OktaCallbackComponent,
+  OktaCallbackComponent
 } from '@okta/okta-angular';
 import { Constants } from './shared/constants';
+import { ShellComponent } from './shell/shell.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileModule } from './profile/profile.module';
+import { LoginComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
 
 /*const stsSettings = {
   authority: Constants.stsAurhority,
@@ -28,11 +30,25 @@ const routes: Routes = [
   {
     path: 'signin-callback',
     component: OktaCallbackComponent
-  }
+  },
+  {
+    path: 'signout-callback',
+    component: OktaCallbackComponent
+  },
+
+  {
+    path: '',
+    component: ShellComponent,
+    children: [
+      { path: 'profiles', component: ProfileComponent},
+      { path: '', redirectTo: 'profiles', pathMatch: 'full'}
+    ]
+  },
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), ProfileModule, LoginModule],
   exports: [RouterModule],
   providers: [
    // { provide: OKTA_CONFIG, useValue: stsSettings },

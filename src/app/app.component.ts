@@ -9,12 +9,12 @@ import { AuthService } from './core/auth-service.component';
 export class AppComponent implements OnInit{
 
   title = 'angulardemo';
-  isLoggedIn = false
-  isAuthenticated = false
+  isLoggedIn = false;
+  isAuthenticated = false;
 
-  constructor(private _authService: AuthService) {
+  constructor(private authService: AuthService) {
    // subscribe to authentication state changes
-   this._authService.isAuthenticated().subscribe(isAuthenticated => this.isAuthenticated = isAuthenticated);
+   this.authService.isAuthenticated().subscribe(isAuthenticated => this.isAuthenticated = isAuthenticated);
 
   }
 
@@ -23,14 +23,14 @@ export class AppComponent implements OnInit{
    //   this.isLoggedIn = loggedIn
    // })
 
-   this.isAuthenticated = await this._authService.isAuthenticatedPromise();
+   this.isAuthenticated = await this.authService.isAuthenticatedPromise();
   }
 
   login() {
-    this._authService.login()
+    this.authService.login();
   }
 
   logout() {
-    this._authService.logout()
+    this.authService.logout();
   }
 }

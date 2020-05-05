@@ -5,25 +5,12 @@ import { Constants } from '../shared/constants';
 //import { Subject } from 'rxjs';
 
 import {
-  OKTA_CONFIG,
-  OktaAuthGuard,
-  OktaAuthModule,
-  OktaCallbackComponent,
   OktaAuthService,
 } from '@okta/okta-angular';
 import { Observable } from 'rxjs';
 
 @Injectable({providedIn: 'root'/*CoreModule*/})
 export class AuthService implements OnInit {
-
-  //private _userManager: UserManager
-  //private _user: User
-  //private _loginChangedSubject = new Subject<boolean>()
-
-  //loginChanged$ = this._loginChangedSubject.asObservable()
-  //isAuthenticated: boolean;
-  //oidcUser: User;
-  //initialized: any;
 
   private code_challenge: string;
   private code_verifier: string;
